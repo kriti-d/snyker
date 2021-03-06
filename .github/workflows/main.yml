@@ -1,8 +1,7 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Poetry Open Source Scan
 
-name: Example workflow for Python using Snyk 
 on: pull_request
 jobs:
   security:
@@ -12,7 +11,6 @@ jobs:
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/python@master
       env:
-        COMMAND: "python setup.py install"
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --file=setup.py
+        args: --file=poetry.lock
